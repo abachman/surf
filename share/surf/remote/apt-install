@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Usage: surf remote apt-install [package1, package2, ...]
+
+set -e
+
+apt-get install -y ${@:1}

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Run updates if the cache is older than 7 days
+if [ `find /var/lib/apt/lists -mtime -7 | wc -l` == 0 ]
+then
+  apt-get -yq  update
+  apt-get -yfq dist-upgrade
+  apt-get -yq autoremove
+  apt-get -yq autoclean
+fi

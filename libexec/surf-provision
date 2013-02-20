@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Usage: surf provision [ssh arguments]
-
-set -e
-
-ssh_args=${@:1}
-
-surf remote apt $ssh_args

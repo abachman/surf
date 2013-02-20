@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Usage: surf remote <remote-script> [ssh arguments]
+# Usage: surf remote "<ssh arguments>" <remote-script> [arg1, arg2, ...]
 
 set -e
 
-ssh ${@:2} 'bash -s' < $_SURF_ROOT/share/surf/remote/$1
+ssh $1 "bash -s ${@:3}" < $_SURF_ROOT/share/surf/remote/$2

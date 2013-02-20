@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Usage: surf rails [ssh arguments]
+
+set -e
+
+ssh_args=${@:1}
+
+surf remote "$ssh_args" apt-upgrade
+surf remote "$ssh_args" ruby
+surf remote "$ssh_args" postgresql
