@@ -5,4 +5,6 @@ set -e
 
 apt-get install -yfq libxslt1-dev libxml2-dev build-essential g++ ruby1.9.1-dev
 # Install bundler if not installed
-bundle -v 2>/dev/null || gem install bundler --no-rdoc --no-ri
+if ! bundle -v  > /dev/null 2>&1; then
+  gem install bundler --no-rdoc --no-ri
+fi

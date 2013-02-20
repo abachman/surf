@@ -14,11 +14,11 @@ Should be easy like https://github.com/37signals/pow/blob/master/install.sh
 
 Update apt and upgrade packages
 
-    surf remote "-p 2222 ubuntu@my-vm" apt-upgrade
+    surf remote my-app.example.com apt-upgrade
 
 Our suggested rails stack
 
-    surf rails -p 2222 ubuntu@my-vm
+    surf rails my-app.example.com
 
 ## TODOs and Notes
 
@@ -27,3 +27,5 @@ Our suggested rails stack
 3. passing config files in
 4. rails application deploy setup, inc git remote for production
 5. use an env var like `SURF_REMOTES=one,two,three` and iterate using those ssh opts for commands
+6. check if apt packages are installed so we don't have to run apt-get install every time
+7. since we're going to change most/all of git-deploy's default hooks, should we roll our own?

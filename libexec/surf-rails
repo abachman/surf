@@ -3,11 +3,12 @@
 
 set -e
 
-ssh=${@:1}
+url=${@:1}
 
-surf remote "$ssh" apt-upgrade
-surf remote "$ssh" nginx
-surf remote "$ssh" postgresql
-surf remote "$ssh" ruby
-surf remote "$ssh" rails-user "`cat ~/.ssh/id_rsa.pub`"
-#surf remote "$ssh" git-deploy
+surf remote $url apt-upgrade
+surf remote $url nginx
+surf remote $url postgresql
+surf remote $url ruby
+surf remote $url apt-install nodejs
+surf remote $url rails-user "`cat ~/.ssh/id_rsa.pub`"
+surf git-deploy $url

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Usage surf git-deploy <url>
+
+set -e
+
+url=$1
+
+surf remote $url apt-install git
+
+if ! git ls-remote production > /dev/null 2>&1; then
+  git remote add production rails@$url:/home/rails
+  git deploy setup -r production
+  git deploy init
+fi
+
+# TODO hook in database.yml. Our own init scripts for the server. Lot's more. Maybe
+# even roll our own git-deploy that is simpler and has our hooks by default.

@@ -2,8 +2,7 @@
 
 set -e
 
-if [ !`id rails 2> /dev/null` ]
-then
+if ! id -u rails > /dev/null 2>&1; then
   useradd -m rails -s /bin/bash
   su - rails <<-EOF
     set -e;
