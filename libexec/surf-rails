@@ -3,8 +3,11 @@
 
 set -e
 
-ssh_args=${@:1}
+ssh=${@:1}
 
-surf remote "$ssh_args" apt-upgrade
-surf remote "$ssh_args" ruby
-surf remote "$ssh_args" postgresql
+surf remote "$ssh" apt-upgrade
+surf remote "$ssh" nginx
+surf remote "$ssh" postgresql
+surf remote "$ssh" ruby
+surf remote "$ssh" rails-user "`cat ~/.ssh/id_rsa.pub`"
+#surf remote "$ssh" git-deploy

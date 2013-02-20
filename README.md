@@ -24,3 +24,6 @@ Our suggested rails stack
 
 1. Install
 2. when we need options, use bash's `getopts`
+3. passing config files in
+4. rails application deploy setup, inc git remote for production
+5. use an env var like `SURF_REMOTES=one,two,three` and iterate using those ssh opts for commands
