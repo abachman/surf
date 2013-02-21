@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 # Usage: surf remote url <remote-script> [arg1, arg2, ...]
+# Help:
+#   You can also send it commands on stdin:
+#
+#     surf remote url < script-to-run
 
 set -e
 
-ssh root@$1 "bash -s ${@:3}" < $_SURF_ROOT/share/surf/remote/$2
+if [ $2 ]; then
+  ssh root@$1 "bash -s ${@:3}" < $_SURF_ROOT/share/surf/remote/$2
+else
+  ssh root@$1 "bash -s" <&0
+fi

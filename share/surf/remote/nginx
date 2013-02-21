@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# Usage: surf remote nginx
-
-set -e
-
-apt-get install -yfq nginx
-# TODO: accept config file, so rails command can send a default rails stack nginx reverse proxy

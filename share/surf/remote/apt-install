@@ -3,4 +3,8 @@
 
 set -e
 
-apt-get install -y ${@:1}
+if ! dpkg-query -l ${@:1} > /dev/null 2>&1; then
+  apt-get install -yfq ${@:1}
+else
+  echo "${@:1} already installed"
+fi

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# Usage: surf remote postgresql
-
-set -e
-
-apt-get install -yfq postgresql libpq-dev
-# TODO: set up our default user with its own db - take user as arg?

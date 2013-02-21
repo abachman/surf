@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Usage: surf nginx <url>
+
+set -e
+
+surf remote $1 apt-install nginx

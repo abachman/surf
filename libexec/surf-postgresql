@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Usage: surf postgresql <url>
+
+set -e
+
+surf remote $1 apt-install postgresql
+# TODO setup rails user
+
