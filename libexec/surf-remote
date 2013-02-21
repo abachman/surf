@@ -7,8 +7,14 @@
 
 set -e
 
+url=$1
+
+if [[ $url != *@* ]]; then
+  url=root@$url
+fi
+
 if [ $2 ]; then
-  ssh root@$1 "bash -s ${@:3}" < $_SURF_ROOT/share/surf/remote/$2
+  ssh $url "bash -s ${@:3}" < $_SURF_ROOT/share/surf/remote/$2
 else
-  ssh root@$1 "bash -s" <&0
+  ssh $url "bash -s" <&0
 fi

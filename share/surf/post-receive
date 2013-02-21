@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+if [ "$GIT_DIR" = "." ]; then
+  cd ..
+  unset GIT_DIR
+fi
+
+
+git reset --hard
+git submodule init && git submodule sync && git submodule update
+
+bundle install --deployment --without=development:test
+RAILS_ENV=production bundle exec rake assets:precompile

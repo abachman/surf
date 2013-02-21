@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: migrate to libexec using stdin surf remote
+
 set -e
 
 if ! id -u rails > /dev/null 2>&1; then

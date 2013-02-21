@@ -3,6 +3,6 @@
 
 set -e
 
-surf remote $1 apt-install postgresql
+surf remote $1 apt-install postgresql libpq-dev
 # TODO setup rails user
 

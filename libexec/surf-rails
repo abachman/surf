@@ -11,4 +11,4 @@ surf postgresql $url
 surf ruby       $url
 surf remote     $url apt-install nodejs
 surf remote     $url rails-user "`cat ~/.ssh/id_rsa.pub`"
-surf git-deploy $url
+surf deploy     $url

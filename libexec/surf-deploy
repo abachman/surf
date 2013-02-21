@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Usage surf deploy <url>
+
+set -e
+
+url=$1
+
+surf remote $url apt-install git
+
+if ! git ls-remote production > /dev/null 2>&1; then
+  set +e
+  git remote rm  production > /dev/null 2>&1
+  set -e
+  git remote add production rails@$url:~/application
+  surf remote rails@$url <<-REMOTE
+    mkdir application
+    cd application
+    git init
+    git config receive.denyCurrentBranch ignore
+REMOTE
+  scp $_SURF_ROOT/share/surf/post-receive rails@$url:application/.git/hooks/
+  git push production master
+fi
+
+# TODO hook in database.yml. Our own init scripts for the server.

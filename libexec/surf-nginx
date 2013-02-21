@@ -4,3 +4,4 @@
 set -e
 
 surf remote $1 apt-install nginx
+# TODO: configure
