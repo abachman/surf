@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Usage: surf user <ssh remote> <application name> <ssh public key>
+
+set -e
+
+if ! surf-remote root@$1 <<< "id -u $2" > /dev/null 2>&1; then
+  surf-remote root@$1 <<-ROOT
+    set -e
+    useradd -m $2 -s /bin/bash
+    su - $2 <<-USER
+      mkdir -p ~/.ssh;
+      chmod 700 ~/.ssh;
+      touch ~/.ssh/authorized_keys;
+      chmod 600 ~/.ssh/authorized_keys;
+      echo $3 >> ~/.ssh/authorized_keys;
+USER
+ROOT
+
+fi

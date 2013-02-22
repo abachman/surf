@@ -3,12 +3,12 @@
 
 set -e
 
-surf remote $1 apt-install postgresql libpq-dev
-surf remote $1 <<-BASH
+surf remote root@$1 apt-install postgresql libpq-dev
+surf remote root@$1 <<-BASH
   set -e
-  if ! sudo -u rails psql application -tAc "SELECT 1" > /dev/null 2>&1; then
+  if ! sudo -u $2 psql $2 -tAc "SELECT 1" > /dev/null 2>&1; then
     cd /tmp
-    sudo -u postgres createuser -D -R -S rails
-    sudo -u postgres createdb --owner rails --encoding utf8 application
+    sudo -u postgres createuser -D -R -S $2
+    sudo -u postgres createdb --owner $2 --encoding utf8 $2
   fi
 BASH

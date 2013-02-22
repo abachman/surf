@@ -3,8 +3,8 @@
 
 set -e
 
-surf remote $1 apt-install libxslt1-dev libxml2-dev build-essential g++ ruby1.9.1-dev
-surf remote $1 <<-REMOTE
+surf remote root@$1 apt-install libxslt1-dev libxml2-dev build-essential g++ ruby1.9.1-dev
+surf remote root@$1 <<-REMOTE
   # Install bundler if not installed
   if ! bundle -v  > /dev/null 2>&1; then
     gem install bundler --no-rdoc --no-ri

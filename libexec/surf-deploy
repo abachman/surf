@@ -1,26 +1,32 @@
 #!/usr/bin/env bash
-# Usage surf deploy <url>
+# Usage surf deploy <url> <name>
 
 set -e
 
 url=$1
+name=$2
 
 surf remote $url apt-install git
 
-if ! git ls-remote production > /dev/null 2>&1; then
+if ! git ls-remote $name > /dev/null 2>&1; then
   set +e
-  git remote rm  production > /dev/null 2>&1
+  git remote rm $name > /dev/null 2>&1
   set -e
-  git remote add production rails@$url:~/application
-  surf remote rails@$url <<-BASH
+
+  git remote add $name $name@$url:~/$name
+  surf remote $name@$url <<-BASH
     set -e
-    mkdir -p application
-    cd application
+    mkdir -p $name
+    cd $name
     git init
     git config receive.denyCurrentBranch ignore
     mkdir -p config
 BASH
-  scp $_SURF_ROOT/share/surf/post-receive rails@$url:application/.git/hooks/
-  scp $_SURF_ROOT/share/surf/database.yml rails@$url:application/config/
-  git push production master
+  scp $_SURF_ROOT/share/surf/post-receive $name@$url:$name/.git/hooks/
+
+  db=$TMPDIR/surf-database.yml-$$.$RANDOM
+  sed s/{{name}}/$2/ $_SURF_ROOT/share/surf/database.yml > $db
+  scp $db $name@$url:$name/config/database.yml
+  
+  git push $name master
 fi

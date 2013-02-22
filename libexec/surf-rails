@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# Usage: surf rails [ssh arguments]
+# Usage: surf rails <ssh remote> <application name>
 
 set -e
 
-url=${@:1}
+url=$1
+name=$2
 
 surf remote     $url apt-upgrade
-surf remote     $url rails-user "`cat ~/.ssh/id_rsa.pub`"
-surf nginx      $url
-surf postgresql $url
+surf user       $url $name "`cat ~/.ssh/id_rsa.pub`"
+surf nginx      $url $name
+surf postgresql $url $name
 surf ruby       $url
 surf remote     $url apt-install nodejs
-surf deploy     $url
-surf puma       $url
+surf deploy     $url $name
+surf puma       $url $name

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# Uage: surf puma <url>
+# Uage: surf puma <url> <application name>
 
 set -e
 
-if ! surf remote $1 <<< "status puma" > /dev/null 2>&1; then
-  scp $_SURF_ROOT/share/surf/puma.conf root@$1:/etc/init/
-  surf remote $1 <<< "stop puma > /dev/null 2>&1; start puma"
+if ! surf remote root@$1 <<< "status puma" > /dev/null 2>&1; then
+  pumaconf=$TMPDIR/surf-puma.conf-$$.$RANDOM
+  sed s/{{name}}/$2/g $_SURF_ROOT/share/surf/puma.conf > $pumaconf
+  scp $pumaconf root@$1:/etc/init/puma.conf
+
+  surf remote root@$1 <<< "stop puma > /dev/null 2>&1; start puma"
 fi
