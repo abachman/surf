@@ -14,8 +14,7 @@ export RAILS_ENV=production
 bundle install --deployment --without=development:test
 ./bin/rake db:migrate
 
-# FIXME: this is broken when running w/ bundle --deployment
-# bundle exec rake assets:precompile
+bundle exec rake assets:precompile
 bundle exec rake assets:clean
 
 bundle exec pumactl -S ../puma restart
