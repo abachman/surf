@@ -16,8 +16,7 @@ bundle install --deployment --without=development:test
 
 # FIXME: this is broken when running w/ bundle --deployment
 # bundle exec rake assets:precompile
-
-git clean -x -f -- public/stylesheets public/javascripts
+bundle exec rake assets:clean
 
 bundle exec pumactl -S ../puma restart
 
