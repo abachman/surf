@@ -5,7 +5,7 @@ set -e
 
 surf remote $1 apt-install nginx
 
-if ! surf-remote root@$1 <<< "file /etc/nginx-sites-enabled/$2" > /dev/null 2>&1; then
+if ! surf-remote root@$1 <<< "file /etc/nginx/sites-enabled/$2" > /dev/null 2>&1; then
   ngconf=$TMPDIR/surf-nginx.conf-$$.$RANDOM
   sed s/{{name}}/$2/g $_SURF_ROOT/share/surf/nginx.conf |
   sed s/{{url}}/$1/g  > $ngconf 
