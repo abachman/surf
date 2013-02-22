@@ -19,10 +19,12 @@ Download surf:
 Initialize surf:
 
 bash:
+
     echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.bash_profile
     exec bash
 
 zsh:
+
     echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.zshenv
     source ~/.zshenv
 
