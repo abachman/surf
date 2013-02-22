@@ -8,6 +8,8 @@ Surf is currently "alpha software". It works and can provision rails application
 
 `surf` focuses on convention over configuration. It is, in my opinion, the best way to setup rails on ubuntu on a vps. The only configurable option right now is application name, nothing else can be changed.
 
+`surf` celebrates minimism and simplicity by not being a generalized solution. Surf is less than 100k at the time of this writing.
+
 `surf` is a command build with [sub](http://github.com/37signals/sub) and only needs bash, sed, ssh, scp, and git to function.
 
 ## Install

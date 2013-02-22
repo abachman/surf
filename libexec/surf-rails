@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-# Usage: surf rails <ssh remote> <application name>
+# Usage: surf rails <url> <name>
+# Summary: set up an ubuntu server with a rails application stack.
+# Help: Run `surf rails` from your rails application directory.
+# The <url> parameter should be a url to the server you want to deploy to. You
+# need to have root access to this server, and public-key authentication
+# is recommended as surf will run many commands over ssh.
+#
+# The <name> parameter is the name of your application. This will be
+# used as the user name, database name, and folder name of the application.
+#
+# When complete, a git remote with the name of <url> will be added. Push
+# to that remove for subsequent deploys.
 
 set -e
 
