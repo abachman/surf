@@ -4,7 +4,6 @@
 set -e
 
 surf remote $1 apt-install postgresql libpq-dev
-# TODO setup rails user
 surf remote $1 <<-BASH
   set -e
   if ! sudo -u rails psql application -tAc "SELECT 1" > /dev/null 2>&1; then

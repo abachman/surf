@@ -24,5 +24,3 @@ BASH
   scp $_SURF_ROOT/share/surf/database.yml rails@$url:application/config/
   git push production master
 fi
-
-# TODO hook in database.yml. Our own init scripts for the server.
