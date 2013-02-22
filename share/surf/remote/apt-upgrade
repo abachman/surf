@@ -2,8 +2,8 @@
 
 set -e
 
-# Run updates if the cache is older than 7 days
-if [ `find /var/lib/apt/lists -mtime -7 | wc -l` == 0 ]
+# Run updates if the cache is older than 1 day
+if [ `find /var/lib/apt/lists -mtime -1 | wc -l` == 0 ]
 then
   apt-get -yq  update
   apt-get -yfq dist-upgrade

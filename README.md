@@ -21,14 +21,23 @@ Update apt and upgrade packages
 
 Our suggested rails stack
 
-    surf rails my-app.example.com
+    surf rails myapp.example.com myapp
+
+## Idempotence
+
+Surf is an idempotent system. That means when you run it repeatedly it won't re-execute what does not need to be done. For example, it will only update apt if the package cache is older than 1 day. It won't re-install packages from apt (or even try to) if they're already installed.
+
+Running surf on a system that has already been setup should take no actions and complete in a few seconds after checks are complete.
+
+## Configuration by fork
+
+Surf's structure is inspired by sub: it is a scaffold full of conventions and defaults. Surf as it exists here is full of my personal choices with no room for configuration.
+
+If you would like to change my decisions, please fork surf, make your changes, and use your own surf. Please don't send pull requests for subjective changes.
+
+If you would like to add recipes or fix broken or buggy recipes, please send pull requests, I appreciate it.
 
 ## TODOs and Notes
 
 1. Install
-2. when we need options, use bash's `getopts`
-3. passing config files in
-4. rails application deploy setup, inc git remote for production
-5. use an env var like `SURF_REMOTES=one,two,three` and iterate using those ssh opts for commands
-6. check if apt packages are installed so we don't have to run apt-get install every time
-7. since we're going to change most/all of git-deploy's default hooks, should we roll our own?
+2. command docs
