@@ -1,4 +1,3 @@
-# TODO: use app name and share pool w/ puma core and thread settings
 production:
   adapter: postgresql
   database: {{name}}
