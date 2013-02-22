@@ -1,13 +1,30 @@
-# SURF IS NOT PRODUCTION READY IT IS SUPER BROKEN DON'T USE IT YET
+# Alpha Software Notice
 
+Surf is currently "alpha software". It works and can provision rails applications and set them up for deployment. It's unfriendly and inexperienced. I'm going to use it in production but you're on your own if you choose to do so.
 
-# surf
+# surf: set up rails fast
 
-Surf the cloud, bro
+`surf` is an easy and fast way to set up ruby on rails on an ubuntu server quickly.
+
+`surf` focuses on convention over configuration. It is, in my opinion, the best way to setup rails on ubuntu on a vps. The only configurable option right now is application name, nothing else can be changed.
+
+`surf` is a command build with [sub](http://github.com/37signals/sub) and only needs bash, sed, ssh, scp, and git to function.
 
 ## Install
 
-Should be easy like https://github.com/37signals/pow/blob/master/install.sh
+Download surf:
+
+    git clone http://github.com/ngauthier/surf .surf
+
+Initialize surf:
+
+bash:
+    echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.bash_profile
+    exec bash
+
+zsh:
+    echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.zshenv
+    source ~/.zshenv
 
 ## Usage
 
@@ -39,5 +56,6 @@ If you would like to add recipes or fix broken or buggy recipes, please send pul
 
 ## TODOs and Notes
 
-1. Install
+1. Install via bash command
 2. command docs
+3. automatic security updates
