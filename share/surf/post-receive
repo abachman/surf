@@ -19,3 +19,5 @@ bundle install --deployment --without=development:test
 
 git clean -x -f -- public/stylesheets public/javascripts
 
+# TODO restart via puma
+

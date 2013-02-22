@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Uage: surf puma <url>
+
+set -e
+scp -q $_SURF_ROOT/share/surf/puma.conf root@$1:/etc/init/
+surf remote $1 <<< "stop puma > /dev/null 2>&1; start puma"

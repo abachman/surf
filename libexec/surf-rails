@@ -12,3 +12,4 @@ surf postgresql $url
 surf ruby       $url
 surf remote     $url apt-install nodejs
 surf deploy     $url
+surf puma       $url
