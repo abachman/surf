@@ -5,4 +5,11 @@ set -e
 
 surf remote $1 apt-install postgresql libpq-dev
 # TODO setup rails user
-
+surf remote $1 <<-BASH
+  set -e
+  if ! sudo -u rails psql application -tAc "SELECT 1" > /dev/null 2>&1; then
+    cd /tmp
+    sudo -u postgres createuser -D -R -S rails
+    sudo -u postgres createdb --owner rails --encoding utf8 application
+  fi
+BASH

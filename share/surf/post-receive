@@ -10,5 +10,12 @@ fi
 git reset --hard
 git submodule init && git submodule sync && git submodule update
 
+export RAILS_ENV=production
 bundle install --deployment --without=development:test
-RAILS_ENV=production bundle exec rake assets:precompile
+./bin/rake db:migrate
+
+# FIXME: this is broken when running w/ bundle --deployment
+# bundle exec rake assets:precompile
+
+git clean -x -f -- public/stylesheets public/javascripts
+

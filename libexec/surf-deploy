@@ -12,13 +12,16 @@ if ! git ls-remote production > /dev/null 2>&1; then
   git remote rm  production > /dev/null 2>&1
   set -e
   git remote add production rails@$url:~/application
-  surf remote rails@$url <<-REMOTE
-    mkdir application
+  surf remote rails@$url <<-BASH
+    set -e
+    mkdir -p application
     cd application
     git init
     git config receive.denyCurrentBranch ignore
-REMOTE
+    mkdir -p config
+BASH
   scp $_SURF_ROOT/share/surf/post-receive rails@$url:application/.git/hooks/
+  scp $_SURF_ROOT/share/surf/database.yml rails@$url:application/config/
   git push production master
 fi
 

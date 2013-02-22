@@ -6,9 +6,9 @@ set -e
 url=${@:1}
 
 surf remote     $url apt-upgrade
+surf remote     $url rails-user "`cat ~/.ssh/id_rsa.pub`"
 surf nginx      $url
 surf postgresql $url
 surf ruby       $url
 surf remote     $url apt-install nodejs
-surf remote     $url rails-user "`cat ~/.ssh/id_rsa.pub`"
 surf deploy     $url
