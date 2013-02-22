@@ -34,13 +34,13 @@ zsh:
 
 ## Example
 
-Update apt and upgrade packages
-
-    surf remote my-app.example.com apt-upgrade
-
 Our suggested rails stack
 
     surf rails myapp.example.com myapp
+
+Update apt and upgrade packages
+
+    surf remote my-app.example.com apt-upgrade
 
 ## Idempotence
 
