@@ -8,12 +8,12 @@ name=$2
 
 surf remote $url apt-install git
 
-if ! git ls-remote $name > /dev/null 2>&1; then
+if ! git ls-remote $url > /dev/null 2>&1; then
   set +e
-  git remote rm $name > /dev/null 2>&1
+  git remote rm $url > /dev/null 2>&1
   set -e
 
-  git remote add $name $name@$url:~/$name
+  git remote add $url $name@$url:~/$name
   surf remote $name@$url <<-BASH
     set -e
     mkdir -p $name
@@ -28,5 +28,5 @@ BASH
   sed s/{{name}}/$2/ $_SURF_ROOT/share/surf/database.yml > $db
   scp $db $name@$url:$name/config/database.yml
   
-  git push $name master
+  git push $url master
 fi
