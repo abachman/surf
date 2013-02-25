@@ -17,7 +17,13 @@ set -e
 url=$1
 name=$2
 
+if [[ $# < 2 ]]; then
+  surf help rails
+  exit 1
+fi
+
 surf remote     $url apt-upgrade
+surf remote     $url apt-install unattended-upgrades
 surf user       $url $name "`cat ~/.ssh/id_rsa.pub`"
 surf nginx      $url $name
 surf postgresql $url $name
