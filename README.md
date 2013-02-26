@@ -63,3 +63,4 @@ If you would like to add recipes or fix broken or buggy recipes, please send pul
 1. Install via bash command
 2. command docs
 3. [automatic security updates](https://help.ubuntu.com/community/AutomaticSecurityUpdates)
+4. Ruby 2.0 from https://gist.github.com/ngauthier/5039249
