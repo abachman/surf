@@ -22,12 +22,12 @@ Initialize surf:
 
 bash:
 
-    echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.bash_profile
+    echo 'eval "$($HOME/.surf/bin/surf init -)"' >> ~/.bash_profile
     exec bash
 
 zsh:
 
-    echo 'eval "$($HOME/.sub/bin/sub init -)"' >> ~/.zshenv
+    echo 'eval "$($HOME/.surf/bin/surf init -)"' >> ~/.zshenv
     source ~/.zshenv
 
 ## Usage
