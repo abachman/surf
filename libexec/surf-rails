@@ -31,3 +31,4 @@ surf ruby       $url
 surf remote     $url apt-install nodejs
 surf deploy     $url $name
 surf puma       $url $name
+surf logrotate  $url $name

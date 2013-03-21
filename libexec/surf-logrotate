@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Usage: surf logrotate <url> <name>
+
+set -e
+
+surf remote $1 apt-install logrotate
+
+if ! surf-remote root@$1 <<< "file /etc/logrotate.d/$2" > /dev/null 2>&1; then
+  lrconf=$TMPDIR/surf-logrotate.conf-$$.$RANDOM
+  sed s/{{name}}/$2/g $_SURF_ROOT/share/surf/logrotate.conf > $lrconf
+
+  scp $lrconf root@$1:/etc/logrotate.d/$2
+fi
