@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: surf nginx <url>
+# Usage: surf nginx <url> <name>
 
 set -e
 
